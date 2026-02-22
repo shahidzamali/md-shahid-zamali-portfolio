@@ -3,13 +3,13 @@
 Welcome to my personal portfolio website built using React.js and modern UI design principles.
 This website showcases my projects, skills, and journey as a developer passionate about MERN Stack Web Development.
 
-🌐 Live Website:
+🌐 Live Website:-
 
 🚀 Features
 
 🎨 Clean and modern UI
 
-⚡ Smooth animations with Framer Motion
+⚡ Smooth animations using Framer Motion
 
 💼 Projects section
 
@@ -22,15 +22,10 @@ This website showcases my projects, skills, and journey as a developer passionat
 🛠️ Tech Stack
 
 Frontend: React.js, HTML5, CSS3, JavaScript (ES6+)
-
 Styling: Tailwind CSS / Custom CSS
-
 Animation: Framer Motion
-
 Contact Form: EmailJS
-
 Version Control: Git & GitHub
-
 Deployment: Vercel
 
 ⚙️ Installation & Setup
@@ -38,10 +33,10 @@ Deployment: Vercel
 To run this project locally, follow these steps:
 
 # Clone the repository
-git clone 
+git clone https://github.com/shahidzamali/md-shahid-zamali-portfolio.git
 
 # Navigate into the project folder
-cd mdshahidzamali-portfolio
+cd md-shahid-zamali-portfolio
 
 # Install dependencies
 npm install
@@ -49,12 +44,12 @@ npm install
 # Start the development server
 npm run dev
 
-Now open 👉 http://localhost:3000
- in your browser.
+Now open 👉 http://localhost:5173
+ in your browser
 
 📬 Contact
 
-If you like to connect or collaborate:
+If you'd like to connect or collaborate:
 
 📧 Email: mdshahidzamali@gmail.com
 
