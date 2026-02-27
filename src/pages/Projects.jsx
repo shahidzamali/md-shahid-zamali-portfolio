@@ -4,6 +4,14 @@ import { Github, ExternalLink } from 'lucide-react'
 
 const PROJECTS = [
   {
+    title: 'Zaquix.AI Mock Interview',
+    desc: 'Zaquix.AI is a full-stack AI-powered mock interview platform built with the MERN Stack, helping users practice technical interviews and improve their performance in a real-world environment.',
+    ss: '/zaquix.png',
+    tech: ['React', 'Node.js', 'MongoDB',],
+    live: 'https://zaquixai-client.onrender.com/',
+    code: 'https://github.com/shahidzamali/ZaquixAI'
+  },
+  {
     title: 'E-commerce Platform',
     desc: 'A full-stack e-commerce web application built with React, Node.js, and MongoDB, featuring product management, cart functionality, user authentication, and order processing.',
     ss: '/onecart.jpeg',
