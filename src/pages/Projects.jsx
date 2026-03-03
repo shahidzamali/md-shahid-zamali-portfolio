@@ -32,8 +32,8 @@ const PROJECTS = [
     desc: 'A full-stack video conferencing web application built with WebRTC, Node.js,and MongoDB, enabling real-time video/audio communication, chat features, and secure user authentication.',
     ss: '/phone.jpeg',
     tech: ['React', 'Node.js', 'MongoDB'],
-    live: '#',
-    code: '#'
+    live: 'https://apna-call-frontend.onrender.com/',
+    code: 'https://github.com/shahidzamali/Apna-Call'
   },
   {
   title: '💼 Portfolio Website',
