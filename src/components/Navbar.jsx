@@ -1,60 +1,179 @@
-import React, { useState, useEffect, useRef } from "react";
-import { NavLink } from "react-router-dom";
+
+import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
-  { label: "Home", to: "/" },
-  { label: "Projects", to: "/projects" },
-  { label: "Gallery", to: "/gallery" },
-  { label: "Skills", to: "/skills" },
-  { label: "Certificates", to: "/certificates" },
-  { label: "Blog", to: "/blog" },
-  { label: "Resume", to: "/resume" },
-  { label: "About Me", to: "/about" },
-  { label: "Contact", to: "/contact" },
+  { label: "Home", id: "home" },
+  { label: "Projects", id: "projects" },
+  { label: "Skills", id: "skills" },
+  { label: "Certificates", id: "certificates" },
+  { label: "Gallery", id: "gallery" },
+  { label: "Blog", id: "blog" },
+  { label: "Resume", id: "resume" },
+  { label: "About Me", id: "about" },
+  { label: "Contact", id: "contact" },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [showButton, setShowButton] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const navRef = useRef(null);
-  const linksRef = useRef(null);
 
-  // Check if links overflow nav width (to show hamburger)
-  const checkOverflow = () => {
-    if (!navRef.current || !linksRef.current) return;
-    setShowButton(linksRef.current.scrollWidth > navRef.current.offsetWidth);
+  // Start every fresh page load at Home and use one
+  // scroll listener to keep the active link synchronized.
+  useEffect(() => {
+    const cleanUrl =
+      window.location.pathname + window.location.search;
+
+    window.history.replaceState(null, "", cleanUrl);
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    setActiveSection("home");
+
+    let frameId;
+
+    const handleScroll = () => {
+      cancelAnimationFrame(frameId);
+
+      frameId = requestAnimationFrame(() => {
+        const sections = links
+          .map((link) => document.getElementById(link.id))
+          .filter(Boolean);
+
+        if (!sections.length) return;
+
+        const navHeight =
+          navRef.current?.getBoundingClientRect().height ?? 80;
+
+        const activeLine = navHeight + 30;
+        let current = sections[0].id;
+
+        for (const section of sections) {
+          if (section.getBoundingClientRect().top <= activeLine) {
+            current = section.id;
+          } else {
+            break;
+          }
+        }
+
+        const atBottom =
+          window.innerHeight + window.scrollY >=
+          document.documentElement.scrollHeight - 5;
+
+        if (atBottom) current = "contact";
+
+        setActiveSection(current);
+
+        const hash = `#${current}`;
+
+        if (window.location.hash !== hash) {
+          window.history.replaceState(
+            null,
+            "",
+            `${window.location.pathname}${window.location.search}${hash}`
+          );
+        }
+      });
+    };
+
+    const resetToHome = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      setActiveSection("home");
+    };
+
+    // Hash removal prevents the browser from restoring #contact
+    // or another section on refresh.
+    resetToHome();
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
+
+  // Navigate to a section when a Navbar link is clicked.
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+
+    if (!section) {
+      console.error(`Navbar section not found: #${id}`);
+      return;
+    }
+
+    setActiveSection(id);
+    setIsOpen(false);
+
+    window.history.pushState(
+      null,
+      "",
+      `${window.location.pathname}${window.location.search}#${id}`
+    );
+
+    section.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
-  useEffect(() => {
-    checkOverflow();
-    window.addEventListener("resize", checkOverflow);
-    return () => window.removeEventListener("resize", checkOverflow);
-  }, []);
+  const linkStyle = (isActive) => ({
+    position: "relative",
+    color: isActive ? "var(--accent)" : "#fff",
+    textDecoration: "none",
+    fontSize: "0.95rem",
+    fontWeight: 500,
+    whiteSpace: "nowrap",
+    cursor: "pointer",
+  });
+
+  const renderActiveLine = (id) =>
+    activeSection === id && (
+      <motion.div
+        layoutId="navbar-active-line"
+        style={{
+          width: "70%",
+          height: "2px",
+          marginTop: "5px",
+          borderRadius: "5px",
+          background: "var(--accent)",
+          boxShadow: "0 0 8px var(--accent)",
+        }}
+      />
+    );
 
   return (
     <>
-      {/* --- Navbar --- */}
       <nav
         ref={navRef}
         style={{
           position: "sticky",
           top: 0,
-          zIndex: 100,
+          zIndex: 1000,
+          width: "100%",
+          boxSizing: "border-box",
           display: "flex",
-          justifyContent: "space-between",
           alignItems: "center",
-          padding: "1rem 2rem",
-          borderBottom: "1px solid rgba(255,255,255,0.1)",
-          background: "rgba(0,0,0,0.6)",
+          justifyContent: "space-between",
+          padding: "0.8rem 2rem",
+          background: "rgba(0, 0, 0, 0.85)",
           backdropFilter: "blur(10px)",
-          fontFamily: "inherit",
+          borderBottom: "1px solid rgba(255,255,255,0.1)",
         }}
       >
-        {/* Logo */}
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        {/* Logo and name */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "12px",
+            flexShrink: 0,
+          }}
+        >
           <motion.div
-            className="logo"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ type: "spring", stiffness: 200 }}
@@ -66,160 +185,178 @@ export default function Navbar() {
           >
             SZ
           </motion.div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <h1 style={{ margin: 0, fontSize: 14 }}>Md Shahid Zamali</h1>
-            <div style={{ fontSize: 12, color: "var(--muted)" }}>
-              Full Stack • Developer
+
+          <div>
+            <h1
+              style={{
+                margin: 0,
+                fontSize: "14px",
+                color: "#fff",
+              }}
+            >
+              Md Shahid Zamali
+            </h1>
+
+            <div
+              style={{
+                fontSize: "12px",
+                color: "var(--muted)",
+              }}
+            >
+              Java Full Stack • Developer
             </div>
           </div>
         </div>
 
-        {/* Desktop links */}
+        {/* Desktop navigation */}
         <div
-          ref={linksRef}
+          className="desktop-navbar-links"
           style={{
-            display: showButton ? "none" : "flex",
+            display: "flex",
+            alignItems: "center",
             justifyContent: "center",
             gap: "2rem",
-            alignItems: "center",
-            flexGrow: 1,
+            flex: 1,
+            marginLeft: "2rem",
           }}
         >
-          {links.map((l) => (
-            <NavLink
-              key={l.to}
-              to={l.to}
-              end
-              style={{
-                position: "relative",
-                fontSize: "0.95rem",
-                textDecoration: "none",
-                color: "white",
-                fontWeight: 500,
-              }}
-            >
-              {({ isActive }) => (
+          {links.map((link) => {
+            const isActive = activeSection === link.id;
+
+            return (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(link.id);
+                }}
+                style={linkStyle(isActive)}
+              >
                 <motion.div
-                  whileHover={{
-                    scale: 1.1,
-                    color: "var(--accent)",
-                    textShadow: "0 0 8px var(--accent)",
-                  }}
-                  transition={{ duration: 0.3 }}
+                  whileHover={{ scale: 1.08 }}
+                  transition={{ duration: 0.2 }}
                   style={{
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
                   }}
                 >
-                  <motion.span
-                    animate={{ color: isActive ? "var(--accent)" : "white" }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {l.label}
-                  </motion.span>
-                  {isActive && (
-                    <motion.div
-                      layoutId="underline"
-                      initial={{ opacity: 0, y: 5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3 }}
-                      style={{
-                        width: "70%",
-                        height: "2px",
-                        marginTop: "4px",
-                        borderRadius: "1px",
-                        backgroundColor: "var(--accent)",
-                        boxShadow: "0 0 6px var(--accent)",
-                      }}
-                    />
-                  )}
+                  <span>{link.label}</span>
+                  {renderActiveLine(link.id)}
                 </motion.div>
-              )}
-            </NavLink>
-          ))}
+              </a>
+            );
+          })}
         </div>
 
-        {/* Hamburger */}
-        {showButton && (
-          <div className="mobile-btn">
-            <button
-              style={{
-                background: "none",
-                border: "none",
-                color: "#fff",
-                fontSize: "1.8rem",
-                cursor: "pointer",
-                zIndex: 10000,
-              }}
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {isOpen ? "✕" : "☰"}
-            </button>
-          </div>
-        )}
+        {/* Mobile menu button */}
+        <button
+          className="navbar-mobile-button"
+          onClick={() => setIsOpen((prev) => !prev)}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+          style={{
+            display: "none",
+            background: "none",
+            border: "none",
+            color: "#fff",
+            fontSize: "1.8rem",
+            cursor: "pointer",
+          }}
+        >
+          {isOpen ? "✕" : "☰"}
+        </button>
       </nav>
 
-      {/* --- Mobile Dropdown Menu --- */}
+      {/* Mobile navigation */}
       <AnimatePresence>
-        {isOpen && showButton && (
+        {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -15 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="navbar-mobile-menu"
             style={{
               position: "fixed",
               top: 0,
               left: 0,
               width: "100%",
               height: "100vh",
-              background: "rgba(0,0,0,0.95)",
+              boxSizing: "border-box",
+              background: "rgba(0,0,0,0.96)",
               backdropFilter: "blur(12px)",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              paddingTop: "4rem",
+              paddingTop: "5rem",
               overflowY: "auto",
               zIndex: 9999,
             }}
           >
             <button
+              onClick={() => setIsOpen(false)}
+              aria-label="Close menu"
               style={{
                 position: "absolute",
                 top: "1rem",
                 right: "1rem",
-                fontSize: "2rem",
-                color: "#fff",
                 background: "none",
                 border: "none",
+                color: "#fff",
+                fontSize: "2rem",
                 cursor: "pointer",
               }}
-              onClick={() => setIsOpen(false)}
             >
               ✕
             </button>
 
-            {links.map((l) => (
-              <NavLink
-                key={l.to}
-                to={l.to}
-                onClick={() => setIsOpen(false)}
+            {links.map((link) => (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(link.id);
+                }}
                 style={{
-                  color: "#fff",
-                  textDecoration: "none",
-                  padding: "1rem 0",
                   width: "100%",
+                  padding: "1rem 0",
                   textAlign: "center",
-                  fontSize: 16,
+                  textDecoration: "none",
+                  color:
+                    activeSection === link.id
+                      ? "var(--accent)"
+                      : "#fff",
+                  fontSize: "16px",
                   borderBottom: "1px solid rgba(255,255,255,0.05)",
                 }}
               >
-                {l.label}
-              </NavLink>
+                {link.label}
+              </a>
             ))}
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Responsive navigation */}
+      <style>{`
+        @media (max-width: 900px) {
+          .desktop-navbar-links {
+            display: none !important;
+          }
+
+          .navbar-mobile-button {
+            display: block !important;
+          }
+        }
+
+        @media (min-width: 901px) {
+          .navbar-mobile-button {
+            display: none !important;
+          }
+        }
+      `}</style>
     </>
   );
 }

@@ -56,7 +56,7 @@ export default function Resume() {
               👨‍💻 Md Shahid Zamali
             </h3>
             <p style={{ margintop: 10, fontSize: 15, color: "#ccc" }}>
-              3rd Year B.Tech — Computer Science & Engineering | Global Group Of Institutes(Affiliated to I.K. Gujral Punjab Technical University) 
+              Final Year B.Tech — Computer Science & Engineering | Global Group Of Institutes(Affiliated to I.K. Gujral Punjab Technical University)
             </p>
             <p style={{ margin: "4px 0", fontSize: 14, color: "#aaa" }}>
               📍 Amritsar, Punjab, India
@@ -80,9 +80,10 @@ export default function Resume() {
           >
             <strong style={{ color: "#00b4ff" }}>Professional Summary:</strong>
             <p style={{ marginTop: 6, color: "#ccc" }}>
-              3rd-year B.Tech Computer Science & Engineering Student. Full Stack Developer specializing in the MERN Stack.
-              I build responsive and scalable web applications using MongoDB, Express.js, React.js, and Node.js, 
-              with a strong focus on clean code and performance.
+              Final-year B.Tech Computer Science & Engineering student specializing in Java Full Stack
+              Development. Skilled in Core Java, JDBC, Hibernate, Spring Boot, MySQL, REST APIs,
+              JavaScript, and React.js. I develop responsive and scalable web applications with a
+              focus on clean architecture, efficient code, performance, and real-world solutions.
             </p>
           </motion.div>
         </motion.div>
@@ -148,28 +149,39 @@ export default function Resume() {
           <h4 style={{ fontSize: 20, color: "#00b4ff", marginBottom: 12 }}>⚙️ Skills</h4>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
             {[
-              "Java",
-              "C",
-              "C++",
-              "Python",
+              "Core Java",
+              "JDBC",
+              "Servlet",
+              "JSP",
+              "Hibernate",
+              "Spring",
+              "Spring Boot",
+              "Spring MVC",
+              "Spring Data JPA",
+              "REST API",
               "HTML",
               "CSS",
               "JavaScript",
-              "React",
+              "React.js",
               "MySQL",
               "MongoDB",
-              "Express.js",
-              "Node.js",
               "Git",
-              "NPM",
+              "GitHub",
+              "Maven",
+              "Postman",
+              "DSA",
+              "OOPs",
               "Problem Solving",
               "Teamwork",
               "Adaptability",
-              "Creativity",
+              "Communication",
             ].map((skill) => (
               <motion.span
                 key={skill}
-                whileHover={{ scale: 1.1, backgroundColor: "rgba(0,180,255,0.3)" }}
+                whileHover={{
+                  scale: 1.1,
+                  backgroundColor: "rgba(0,180,255,0.3)",
+                }}
                 style={{
                   background: "rgba(255,255,255,0.05)",
                   padding: "6px 12px",

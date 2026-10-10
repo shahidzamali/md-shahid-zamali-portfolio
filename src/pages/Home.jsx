@@ -1,11 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import "../CSS/Home.css"
-import '../index.css' 
+import '../index.css'
 
 
 // 🖼️ Import Assets
-import photo from '../../public/image.jpeg'
+import photo from '../../public/image.jpg'
 import githubLogo from '../../public/github.png'
 import linkedinLogo from '../../public/linkedin.png'
 import gmailLogo from '../../public/gmail.png'
@@ -14,20 +14,21 @@ import instagramLogo from '../../public/insta.png'
 
 export default function Home() {
   const professions = [
-    'Software Developer',
-    'MERN Stack Developer',
-    "Web Development",
-    'Problem Solver',
-    'Developer',
-  ]
+    "Java Full Stack Developer",
+    "Software Developer",
+    "Java Developer",
+    "Backend Developer",
+    "Spring Boot Developer",
+    "Web Developer",
+  ];
 
   const quickLinks = [
     { img: githubLogo, title: 'GitHub', link: 'https://github.com/shahidzamali' },
     { img: linkedinLogo, title: 'LinkedIn', link: 'https://www.linkedin.com/in/md-shahid-zamali-6b0095313/' },
     { img: gmailLogo, title: 'Email', link: 'mailto:mdshahidzamali@gmail.com' },
     { img: whatsappLogo, title: 'WhatsApp', link: 'https://wa.me/+917903736395' },
-    { img: instagramLogo, title: 'Instagram', link: 'https://www.instagram.com/zam_world_05/' },
-  
+    // { img: instagramLogo, title: 'Instagram', link: 'https://www.instagram.com/zam_world_05/' },
+
   ]
 
   return (
@@ -90,7 +91,7 @@ export default function Home() {
 
           {/* Typing Animated Text */}
           <p className="typing-effect">
-           Full Stack Developer | Software Developer | Java & DSA
+            Full Stack Developer | Software Developer | Java & DSA
           </p>
 
           {/* Profession Tags */}
@@ -105,7 +106,7 @@ export default function Home() {
           {/* Info Cards */}
           <motion.div className="info-cards">
             {[
-              { label: '📍 Location', value: 'Amritsar, Punjab, India' },
+              { label: '📍 Location', value: 'Noida, Uttar Pradesh, India' },
               { label: '💼 Expertise', value: 'Java, Web Development' },
               { label: '📧 Contact', value: 'mdshahidzamali@gmail.com' },
             ].map((info, i) => (

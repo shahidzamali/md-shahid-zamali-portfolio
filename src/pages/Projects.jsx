@@ -4,45 +4,41 @@ import { Github, ExternalLink } from 'lucide-react'
 
 const PROJECTS = [
   {
-    title: 'Zaquix.AI Mock Interview',
-    desc: 'Zaquix.AI is a full-stack AI-powered mock interview platform built with the MERN Stack, helping users practice technical interviews and improve their performance in a real-world environment.',
-    ss: '/zaquix.png',
-    tech: ['React', 'Node.js', 'MongoDB',],
-    live: 'https://zaquixai-client.onrender.com/',
-    code: 'https://github.com/shahidzamali/ZaquixAI'
+    title: '🛒 Zam Digital Store',
+    desc: 'A full-stack digital learning platform built with Java, Spring Boot, and MySQL, featuring course management, PDF uploads, Razorpay payment integration, and secure course material downloads.',
+    ss: '/zam-study-point.png',
+    tech: ['Java', 'Spring Boot', 'Hibernate/JPA', 'MySQL', 'Maven', 'Razorpay'],
+    live: '#',
+    code: 'https://github.com/shahidzamali/zam-study-point'
   },
+
   {
-    title: 'E-commerce Platform',
-    desc: 'A full-stack e-commerce web application built with React, Node.js, and MongoDB, featuring product management, cart functionality, user authentication, and order processing.',
-    ss: '/onecart.jpeg',
-    tech: ['React', 'Node.js', 'MongoDB',],
-    live: 'https://one-cart-store-five.vercel.app/login',
-    code: 'https://github.com/shahidzamali/oneCartStore'
+    title: '🚗 Vehicle Booking System',
+    desc: 'A console-based vehicle booking application developed using Core Java and Object-Oriented Programming concepts. It manages vehicle details, customer bookings, and booking operations through a menu-driven interface.',
+    ss: '/vehicle-booking.png',
+    tech: ['Java', 'OOP', 'Collections', 'Exception Handling'],
+    live: '#',
+    code: 'https://github.com/shahidzamali/vehicle-booking-system'
   },
+
   {
-  title: '🚚 Food Delivery App',
-  desc: 'Fast and reliable food delivery bringing delicious meals from your favorite restaurants straight to your door. Enjoy fresh food, easy ordering, and quick service anytime, anywhere.',
-  ss: '/food.png',
-  tech: ['React', 'Firebase', 'TailwindCSS',],
-  live: 'https://quick-bite-bay-nu.vercel.app/',
-  code: 'https://github.com/shahidzamali/QuickBite'
+    title: '💼 Portfolio Website',
+    desc: 'A modern and responsive portfolio built with React and Framer Motion, showcasing projects, skills, and achievements with smooth animations and interactive UI.',
+    ss: '/portfolio1.png',
+    tech: ['React', 'Framer Motion', 'Tailwind CSS'],
+    live: 'https://mdshahidzamali.tech/',
+    code: '#'
   },
+
   {
-    title: 'Real-Time Communication Platform',
-    desc: 'A full-stack video conferencing web application built with WebRTC, Node.js,and MongoDB, enabling real-time video/audio communication, chat features, and secure user authentication.',
-    ss: '/phone.jpeg',
-    tech: ['React', 'Node.js', 'MongoDB'],
-    live: 'https://apna-call-frontend.onrender.com/',
-    code: 'https://github.com/shahidzamali/Apna-Call'
+    title: '🚚 Food Delivery App',
+    desc: 'Fast and reliable food delivery bringing delicious meals from your favorite restaurants straight to your door. Enjoy fresh food, easy ordering, and quick service anytime, anywhere.',
+    ss: '/food.png',
+    tech: ['React', 'Firebase', 'TailwindCSS',],
+    live: 'https://quick-bite-bay-nu.vercel.app/',
+    code: 'https://github.com/shahidzamali/QuickBite'
   },
-  {
-  title: '💼 Portfolio Website',
-  desc: 'A modern and responsive portfolio built with React and Framer Motion, showcasing projects, skills, and achievements with smooth animations and interactive UI.',
-  ss: '/portfolio1.png',
-  tech: ['React', 'Framer Motion', 'Tailwind CSS'],
-  live: 'https://mdshahidzamali.tech/',
-  code: '#'
-  },
+
   {
     title: 'Weather Application',
     desc: 'A real-time weather forecasting application with providing accurate temperature,weather conditions,and live updates through a clean and responsive interface.',
@@ -59,7 +55,23 @@ const PROJECTS = [
     live: 'https://gard-collage.vercel.app/',
     code: 'https://github.com/shahidzamali/Gard-Collage'
   },
- 
+  {
+    title: 'Zaquix.AI Mock Interview',
+    desc: 'Zaquix.AI is a full-stack AI-powered mock interview platform built with the MERN Stack, helping users practice technical interviews and improve their performance in a real-world environment.',
+    ss: '/zaquix.png',
+    tech: ['React', 'Node.js', 'MongoDB',],
+    live: 'https://zaquixai-client.onrender.com/',
+    code: 'https://github.com/shahidzamali/ZaquixAI'
+  },
+  {
+    title: 'E-commerce Platform',
+    desc: 'A full-stack e-commerce web application built with React, Node.js, and MongoDB, featuring product management, cart functionality, user authentication, and order processing.',
+    ss: '/onecart.jpeg',
+    tech: ['React', 'Node.js', 'MongoDB',],
+    live: 'https://one-cart-store-five.vercel.app/login',
+    code: 'https://github.com/shahidzamali/oneCartStore'
+  },
+
 ]
 
 export default function Projects() {
@@ -69,7 +81,7 @@ export default function Projects() {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      id="projects"
+
     >
       <div className="card" style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 30 }}>
         <motion.h2

@@ -57,22 +57,22 @@ const AboutMe = () => {
           }}
         >
           Hi, I’m <strong>Md Shahid Zamali</strong> — a{" "}
-          <strong>Full Stack Developer</strong> specializing in the{" "}
-          <strong>MERN Stack.</strong> I build responsive and scalable web applications 
-          using MongoDB, Express.js, React.js, and Node.js,
-           with a strong focus on clean code and performance. 
-           loves turning ideas
+          <strong>Java Full Stack Developer</strong> with a strong focus on{" "}
+          <strong>Java, DSA & Web Development.</strong> I build responsive
+          and scalable web applications using Java, Spring Boot, React.js,
+          and modern web technologies, while continuously improving my
+          problem-solving and data structures & algorithms skills.
         </p>
 
         <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.8)" }}>
           Beyond development, I focus on improving my{" "}
-          <strong>problem-solving</strong> skills and understanding of system design principles. 
+          <strong>problem-solving</strong> skills and understanding of system design principles.
           My goal is to build applications that are not only high-performing and reliable, but also clean, maintainable, and user-focused.
         </p>
 
         <p>
-            I am currently a 3rd-year B.Tech (CSE) student, actively seeking internship opportunities where
-            I can apply my development skills, learn from real-world projects, and contribute to impactful software solutions.
+          I am currently a final-year B.Tech (CSE) student, actively seeking internship opportunities where
+          I can apply my development skills, learn from real-world projects, and contribute to impactful software solutions.
         </p>
 
         {/* --- Education Section --- */}
@@ -141,7 +141,7 @@ const AboutMe = () => {
                   Punjab
                 </p>
                 <p style={{ color: "rgba(255,255,255,0.7)" }}>
-                  3rd Year (Pursuing) | GPA: 7.5
+                  Final Year (Pursuing) | GPA: 7.5
                 </p>
                 <p style={{ color: "rgba(255,255,255,0.7)" }}>2023 – 2027</p>
               </div>
@@ -182,7 +182,7 @@ const AboutMe = () => {
                     marginBottom: "0.2rem",
                   }}
                 >
-                  <strong>Upgraded High School Garhi Bishanpur</strong> — 
+                  <strong>Upgraded High School Garhi Bishanpur</strong> —
                   Lakhisarai, Bihar
                 </p>
                 <p style={{ color: "rgba(255,255,255,0.7)" }}>

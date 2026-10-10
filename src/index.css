@@ -8,7 +8,20 @@
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 *{box-sizing:border-box}
-html,body,#root{height:100%}
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  height: auto;
+}
+
+#root {
+  min-height: 100vh;
+  height: auto;
+}
 body{
   margin:0;
   background: radial-gradient(800px 500px at 10% 10%, rgba(124,58,237,0.08), transparent 10%),
@@ -18,7 +31,6 @@ body{
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   line-height:1.5;
-  overflow-y:scroll;
 }
 .app{min-height:100vh;display:flex;flex-direction:column}
 .footer{text-align:center;padding:20px;color:var(--muted);font-size:13px}
@@ -357,4 +369,628 @@ form h3 {
 .vote-btn.disagree:hover {
   background-color: #ff4c4c;
   color: #0b0e14;
+}
+/* =========================================================
+   GLOBAL MOBILE RESPONSIVE FIX
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  /* ---------- Navbar ---------- */
+
+  nav {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* ---------- Sections ---------- */
+
+  section {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* ---------- Home ---------- */
+
+  .home-section {
+    width: 100%;
+    padding: 50px 25px;
+    overflow: hidden;
+  }
+
+  .home-top {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 45px;
+  }
+
+  .home-info {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .home-title {
+    font-size: clamp(36px, 7vw, 60px);
+    line-height: 1.15;
+  }
+
+  .typing-effect {
+    font-size: clamp(18px, 3vw, 25px);
+    line-height: 1.5;
+  }
+
+  .profession-tags {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .info-cards {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .photo-container {
+    max-width: 90vw;
+  }
+
+  /* ---------- Gallery ---------- */
+
+  .gallery-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 40px 20px;
+    overflow: hidden;
+  }
+
+  .post-feed {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .post-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .photo-item {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .photo-item img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* ---------- Projects ---------- */
+
+  .projects-container,
+  .projects-grid {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* ---------- Skills ---------- */
+
+  .skills-container,
+  .skills-grid {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* ---------- Certificates ---------- */
+
+  .certificates-container,
+  .certificates-grid {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .certificates-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* ---------- About ---------- */
+
+  .about-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* ---------- Contact ---------- */
+
+  .contact-container {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* =======================================================
+     NAVBAR
+     ======================================================= */
+
+  nav {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    padding: 15px 16px !important;
+  }
+
+  nav > div {
+    max-width: 100% !important;
+  }
+
+  /* Hide desktop navigation */
+  nav ul {
+    display: none !important;
+  }
+
+  /* Logo area */
+  nav .logo,
+  nav .brand,
+  nav .nav-brand {
+    max-width: 100%;
+  }
+
+
+  /* =======================================================
+     HOME
+     ======================================================= */
+
+  .home-section {
+    width: 100%;
+    min-width: 0;
+    padding: 45px 16px 35px;
+  }
+
+  .home-top {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+  }
+
+  /* Profile photo */
+
+  .photo-container {
+    width: min(75vw, 300px);
+    height: min(75vw, 300px);
+    max-width: 300px;
+    max-height: 300px;
+  }
+
+  .photo-frame,
+  .profile-photo,
+  .photo-ring {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Home text */
+
+  .home-info {
+    width: 100%;
+    min-width: 0;
+    text-align: center;
+  }
+
+  .home-title {
+    width: 100%;
+    font-size: clamp(32px, 9vw, 48px);
+    line-height: 1.15;
+    word-break: normal;
+  }
+
+  .home-name {
+    display: inline;
+  }
+
+  .typing-effect {
+    width: 100%;
+    font-size: 17px;
+    line-height: 1.6;
+    white-space: normal !important;
+    overflow: visible !important;
+  }
+
+  /* Profession tags */
+
+  .profession-tags {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .profession-tag {
+    max-width: 100%;
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+
+  /* Info cards */
+
+  .info-cards {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .info-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Quick links */
+
+  .quick-links {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .quick-links-list {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+
+  /* =======================================================
+     GALLERY
+     ======================================================= */
+
+  .gallery-container {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 35px 12px;
+    overflow-x: hidden;
+  }
+
+  .gallery-title {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+  /* Gallery tabs */
+
+  .tab-buttons {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 5px;
+  }
+
+  .tab {
+    font-size: 12px;
+    padding: 8px 12px;
+    white-space: nowrap;
+  }
+
+  /* Gallery cards */
+
+  .post-feed {
+    width: 100%;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 18px;
+    margin-top: 25px;
+  }
+
+  .post-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .caption {
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  /* IMPORTANT:
+     Don't force fixed height on gallery photos.
+     Portrait + landscape both remain fully visible.
+  */
+
+  .photo-grid,
+  .photo-grid.single,
+  .photo-grid.multi {
+    width: 100%;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .photo-item {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: auto !important;
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111;
+    border-radius: 10px;
+  }
+
+  .photo-item img {
+    display: block;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    object-fit: contain !important;
+  }
+
+  /* Zoom */
+
+  .zoom-overlay {
+    width: 100vw;
+    height: 100vh;
+    padding: 15px;
+  }
+
+  .zoom-img {
+    width: auto !important;
+    height: auto !important;
+    max-width: 94vw !important;
+    max-height: 85vh !important;
+    object-fit: contain !important;
+  }
+
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-btn.left {
+    left: 8px;
+  }
+
+  .nav-btn.right {
+    right: 8px;
+  }
+
+  .close-btn {
+    top: 15px;
+    right: 15px;
+  }
+
+
+  /* =======================================================
+     PROJECTS
+     ======================================================= */
+
+  .projects-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 35px 15px;
+  }
+
+  .projects-grid {
+    width: 100%;
+    grid-template-columns: 1fr !important;
+  }
+
+  .project-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+  /* =======================================================
+     SKILLS
+     ======================================================= */
+
+  .skills-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 35px 15px;
+  }
+
+  .skills-grid {
+    width: 100%;
+    grid-template-columns: 1fr !important;
+  }
+
+  .skill-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+  /* =======================================================
+     CERTIFICATES
+     ======================================================= */
+
+  .certificates-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 35px 15px;
+  }
+
+  .certificates-grid {
+    width: 100%;
+    grid-template-columns: 1fr !important;
+  }
+
+  .certificate-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+  /* =======================================================
+     ABOUT
+     ======================================================= */
+
+  .about-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 35px 15px;
+  }
+
+  .about-container img {
+    max-width: 100%;
+    height: auto;
+  }
+
+
+  /* =======================================================
+     CONTACT
+     ======================================================= */
+
+  .contact-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 35px 15px;
+  }
+
+  .contact-container input,
+  .contact-container textarea,
+  .contact-container button {
+    width: 100%;
+    max-width: 100%;
+  }
+
+
+  /* =======================================================
+     FOOTER
+     ======================================================= */
+
+  footer {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .home-section {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .home-title {
+    font-size: 30px;
+  }
+
+  .typing-effect {
+    font-size: 15px;
+  }
+
+  .profession-tag {
+    font-size: 12px;
+    padding: 8px 11px;
+  }
+
+  .gallery-container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .tab {
+    font-size: 11px;
+    padding: 7px 10px;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 80px;
 }

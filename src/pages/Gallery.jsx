@@ -4,40 +4,52 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import "../CSS/Gallery.css";
 
 const IMAGES = {
+  achievements: [
+    {
+      id: 1,
+      caption: "Solved 150+ LeetCode questions 🏆!",
+      photos: ["/gallery/leet.png"],
+    },
+    {
+      id: 2,
+      caption: "Honored for active participation and performance in college event 🎉",
+      photos: ["/gallery/achive2.jpg"],
+    },
+  ],
   personal: [
     {
-    id: 1,
-    caption: "Focused study time — building my future 📚💻",
-    photos: ["/gallery/2.webp"],
-  },
-  {
-    id: 2,
-    caption: "Discipline now, results later 📚💻",
-    photos: ["/gallery/1.jpeg"],
-  },
-  {
+      id: 1,
+      caption: "Focused study time — building my future 📚💻",
+      photos: ["/gallery/2.webp"],
+    },
+    {
+      id: 2,
+      caption: "Discipline now, results later 📚💻",
+      photos: ["/gallery/1.jpeg"],
+    },
+    {
       id: 3,
       caption: "Focused. Determined. Consistent.",
       photos: ["/gallery/5.jpeg",],
     },
-     {
-    id: 4,
-    caption: "Grateful for everything, chasing more 💫",
-    photos: ["/gallery/4.jpeg"],
-  },
-   {
-    id: 5,
-    caption: "Horse riding adventure — fearless vibes 🐎🔥",
-    photos: ["/gallery/3.jpg"],
-  },
-   {
-    id: 7,
-    caption: "Enjoy the journey, not just the destination. 🚀",
-    photos: ["/gallery/6.jpeg"],
-  },
-    
+    {
+      id: 4,
+      caption: "Grateful for everything, chasing more 💫",
+      photos: ["/gallery/4.jpeg"],
+    },
+    {
+      id: 5,
+      caption: "Horse riding adventure — fearless vibes 🐎🔥",
+      photos: ["/gallery/3.jpg"],
+    },
+    {
+      id: 7,
+      caption: "Enjoy the journey, not just the destination. 🚀",
+      photos: ["/gallery/6.jpeg"],
+    },
+
   ],
-   collegeLife: [
+  collegeLife: [
     {
       id: 1,
       caption: "College fest moments 🎉",
@@ -46,7 +58,7 @@ const IMAGES = {
     {
       id: 2,
       caption: "College fest moments 🎉",
-      photos: [ "/gallery/collagefest2.jpg"],
+      photos: ["/gallery/collagefest2.jpg"],
     },
     {
       id: 3,
@@ -62,17 +74,17 @@ const IMAGES = {
       id: 5,
       caption: "Campus memories with friends 🎓❤️",
       photos: ["/gallery/collegelife.jpg"],
-      
+
     },
     {
       id: 6,
       caption: "Campus memories with friends 🎓❤️",
       photos: ["/gallery/college4.jpg"],
-      
+
     },
-    
+
   ],
-   travelDiaries: [
+  travelDiaries: [
     {
       id: 1,
       caption: "Mountains calling, and I must go 🏔️🔥",
@@ -109,7 +121,7 @@ const IMAGES = {
       id: 1,
       caption:
         "E-commerce Platform – Full-stack web app with product management, cart, authentication, and order processing built using React, Node.js, and MongoDB.",
-      photos: ["/gallery/p1.png", "/gallery/p2.png","/gallery/p3.png", "/gallery/p4.png"],
+      photos: ["/gallery/p1.png", "/gallery/p2.png", "/gallery/p3.png", "/gallery/p4.png"],
     },
     {
       id: 1,
@@ -118,18 +130,7 @@ const IMAGES = {
       photos: ["/gallery/project2.png", "/gallery/project22.png"],
     },
   ],
-  achievements: [
-    {
-      id: 1,
-      caption: "Solved 100 LeetCode questions 🏆!",
-      photos: ["/gallery/leet.png"],
-    },
-    {
-      id: 2,
-      caption: "Honored for active participation and performance in college event 🎉",
-      photos: ["/gallery/achive2.jpg"],
-    },
-  ],
+
 };
 
 // ✨ Animation Variants
@@ -165,7 +166,7 @@ const tabContentVariants = {
 };
 
 export default function Gallery() {
-  const [tab, setTab] = useState("personal");
+  const [tab, setTab] = useState("achievements");
   const [zoom, setZoom] = useState({ img: null, post: null, index: 0 });
 
   const openZoom = (post, index) =>
@@ -201,7 +202,7 @@ export default function Gallery() {
 
       {/* 🧭 Tabs */}
       <motion.div className="tab-buttons" variants={childVariants}>
-        {["personal","collegeLife","travelDiaries", "projects", "achievements"].map((type) => (
+        {["achievements", "personal", "collegeLife", "travelDiaries", "projects"].map((type) => (
           <motion.button
             key={type}
             className={`tab ${tab === type ? "active" : ""}`}
@@ -233,9 +234,8 @@ export default function Gallery() {
             >
               <p className="caption">{post.caption}</p>
               <div
-                className={`photo-grid ${
-                  post.photos.length > 1 ? "multi" : "single"
-                }`}
+                className={`photo-grid ${post.photos.length > 1 ? "multi" : "single"
+                  }`}
               >
                 {post.photos.map((src, i) => (
                   <motion.div
